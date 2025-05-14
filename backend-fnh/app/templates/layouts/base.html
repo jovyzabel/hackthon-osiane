@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title + " - " if title else "" }}{{ config.SITE_NAME }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('core.index') }}">Accueil (Soumission Dossier)</a> |
+            <a href="{{ url_for('core.track_status_form') }}">Suivre mon dossier</a> |
+            {% if current_user.is_anonymous %}
+                <a href="{{ url_for('auth.login') }}">Accès Interne</a>
+            {% else %}
+                <a href="{{ url_for('core.dashboard') }}">Tableau de Bord</a> |
+                <a href="{{ url_for('auth.logout') }}">Déconnexion ({{ current_user.nom }})</a>
+            {% endif %}
+        </nav>
+        <h1>{{ title or config.SITE_NAME }}</h1>
+    </header>
+    <main class="container"> {# Ajoutez une classe container pour le centrage si besoin #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© {{ current_year }} Fondation Horizons Nouveaux - Hackathon AKIENI-OSIANE</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% block scripts %}{% endblock %} {# Pour les scripts spécifiques à une page #}
+</body>
+</html>
