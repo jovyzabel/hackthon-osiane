@@ -2,6 +2,7 @@ import Button from "@/components/Button";
 import Card from "@/components/Cards";
 import Header from "@/components/Header";
 import Landing from "@/components/Landing";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
           </p>
         </section>
         <section className="flex justify-center">
-          <Button title="Commencer l'enquête" />
+         <Link href="/auth/login"><Button title="Commencer l'enquête" /></Link>
         </section>
         <section className="my-8">
           <h2 className="text-2xl font-bold text-center mb-4">
@@ -58,10 +59,7 @@ export default function Home() {
       </main>
 
       <footer className="bg-pink-600 text-white p-4 text-center">
-        <p>
-          &copy; 2023 Association pour l'Aide aux Enfants Handicapés. Tous
-          droits réservés.
-        </p>
+        <p>&copy; 2023 FNH. Tous droits réservés.</p>
       </footer>
     </>
   );
