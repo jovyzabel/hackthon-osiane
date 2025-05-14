@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return ( 
-      <header className="bg-pink-600 text-white p-4">
+      <header className="bg-pink-600 text-white sticky p-4">
         <nav className="flex justify-between items-center">
           <div className="flex items-center">
             <img src="/images/logo.jpg" alt="Logo de l'Association" className="h-10 w-auto mr-4 rounded-2xl" />
@@ -22,6 +22,11 @@ export default function Header() {
             <li>
               <Link href="/a-propos" className="hover:underline">
                 À Propos
+              </Link>
+            </li>
+            <li>
+              <Link href="/auth/login" className="hover:underline">
+                Connexion
               </Link>
             </li>
           </ul>
