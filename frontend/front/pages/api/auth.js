@@ -45,7 +45,6 @@ export default async function handler(req, res) {
     try {
       const { action, email, password, role, name } = req.body;
 
-      // Inscription
       if (action === "register") {
         // Vérifier si l'utilisateur existe déjà
         const userExists = users.find((u) => u.email === email);
